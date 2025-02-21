@@ -1,5 +1,7 @@
 import { GildedRose, Item } from '@/gilded-rose';
 
+const AGED_BRIE = 'Aged Brie';
+
 describe('Gilded Rose', () => {
 	it('should decrease the quality and sellin of an item by 1', () => {
 		const fooItem = new Item('foo', 2, 10);
@@ -41,5 +43,16 @@ describe('Gilded Rose', () => {
 		expect(fooItem.sellIn).toBe(19);
 		expect(barItem.quality).toBe(0);
 		expect(barItem.sellIn).toBe(-5);
+	});
+
+	it('should increase the quality of AGED_BRIE by 1', () => {
+		const agedBrieItem = new Item(AGED_BRIE, 3, 5);
+
+		const gildedRose = new GildedRose([agedBrieItem]);
+
+		gildedRose.updateQuality();
+
+		expect(agedBrieItem.quality).toBe(6);
+		expect(agedBrieItem.sellIn).toBe(2);
 	});
 });
