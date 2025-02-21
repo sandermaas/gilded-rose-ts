@@ -1,6 +1,7 @@
 import { GildedRose, Item } from '@/gilded-rose';
 
 const AGED_BRIE = 'Aged Brie';
+const BACKSTAGE_PASSES = 'Backstage passes to a TAFKAL80ETC concert';
 const SULFURAS = 'Sulfuras, Hand of Ragnaros';
 
 describe('Gilded Rose', () => {
@@ -77,5 +78,65 @@ describe('Gilded Rose', () => {
 
 		expect(sulfurasItem.quality).toBe(10);
 		expect(sulfurasItem.sellIn).toBe(10);
+	});
+
+	it('should increase the quality of BACKSTAGE_PASSES by 1 when sellIn is higher than 10', () => {
+		const passesWithSellin11Item = new Item(BACKSTAGE_PASSES, 11, 2);
+		const passesWithSellin20Item = new Item(BACKSTAGE_PASSES, 20, 4);
+
+		const gildedRose = new GildedRose([
+			passesWithSellin11Item,
+			passesWithSellin20Item,
+		]);
+
+		gildedRose.updateQuality();
+
+		expect(passesWithSellin11Item.quality).toBe(3);
+		expect(passesWithSellin11Item.sellIn).toBe(10);
+		expect(passesWithSellin20Item.quality).toBe(5);
+		expect(passesWithSellin20Item.sellIn).toBe(19);
+	});
+
+	it('should increase the quality of BACKSTAGE_PASSES by 2 when sellIn is between 6 and 10', () => {
+		const passesWithSellin6Item = new Item(BACKSTAGE_PASSES, 6, 3);
+		const passesWithSellin10Item = new Item(BACKSTAGE_PASSES, 10, 5);
+
+		const gildedRose = new GildedRose([
+			passesWithSellin6Item,
+			passesWithSellin10Item,
+		]);
+
+		gildedRose.updateQuality();
+
+		expect(passesWithSellin6Item.quality).toBe(5);
+		expect(passesWithSellin6Item.sellIn).toBe(5);
+		expect(passesWithSellin10Item.quality).toBe(7);
+		expect(passesWithSellin10Item.sellIn).toBe(9);
+	});
+
+	it('should increase the quality of BACKSTAGE_PASSES by 3 when sellIn is between 1 and 5', () => {
+		const passesWithSellin1Item = new Item(BACKSTAGE_PASSES, 1, 4);
+		const passesWithSellin5Item = new Item(BACKSTAGE_PASSES, 5, 6);
+
+		const gildedRose = new GildedRose([
+			passesWithSellin1Item,
+			passesWithSellin5Item,
+		]);
+
+		gildedRose.updateQuality();
+
+		expect(passesWithSellin1Item.quality).toBe(7);
+		expect(passesWithSellin5Item.quality).toBe(9);
+	});
+
+	it('should set quality of BACKSTAGE_PASSES to 0 when sellIn is 0 or less', () => {
+		const backstagePassesItem = new Item(BACKSTAGE_PASSES, 0, 8);
+
+		const gildedRose = new GildedRose([backstagePassesItem]);
+
+		gildedRose.updateQuality();
+
+		expect(backstagePassesItem.quality).toBe(0);
+		expect(backstagePassesItem.sellIn).toBe(-1);
 	});
 });
