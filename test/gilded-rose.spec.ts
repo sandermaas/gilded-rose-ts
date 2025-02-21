@@ -1,8 +1,5 @@
+import { AGED_BRIE, BACKSTAGE_PASSES, SULFURAS } from '@/constants';
 import { GildedRose, Item } from '@/gilded-rose';
-
-const AGED_BRIE = 'Aged Brie';
-const BACKSTAGE_PASSES = 'Backstage passes to a TAFKAL80ETC concert';
-const SULFURAS = 'Sulfuras, Hand of Ragnaros';
 
 describe('Gilded Rose', () => {
 	it('should decrease the quality and sellin of an item by 1', () => {
