@@ -1,16 +1,16 @@
-import { pathsToModuleNameMapper } from "ts-jest";
+import { pathsToModuleNameMapper } from 'ts-jest';
 
-import { compilerOptions } from "./tsconfig.json";
+import { compilerOptions } from './tsconfig.json';
 
 export default {
-  roots: ["<rootDir>/app", "<rootDir>/test"],
-  collectCoverage: true,
-  coverageDirectory: "coverage",
-  coverageProvider: "v8",
-  transform: {
-    "^.+\\.tsx?$": "ts-jest",
-  },
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: "<rootDir>/",
-  }),
+	roots: ['<rootDir>/app', '<rootDir>/test'],
+	collectCoverage: true,
+	coverageDirectory: 'coverage',
+	coverageProvider: 'v8',
+	transform: {
+		'^.+\\.tsx?$': 'ts-jest',
+	},
+	moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+		prefix: '<rootDir>/',
+	}),
 };

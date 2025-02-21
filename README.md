@@ -27,3 +27,9 @@ To run all tests in watch mode
 ```sh
 pnpm test:watch
 ```
+
+## Format the code with Prettier
+
+```sh
+pnpm format
+```
