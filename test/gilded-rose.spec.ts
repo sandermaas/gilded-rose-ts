@@ -1,6 +1,7 @@
 import { GildedRose, Item } from '@/gilded-rose';
 
 const AGED_BRIE = 'Aged Brie';
+const SULFURAS = 'Sulfuras, Hand of Ragnaros';
 
 describe('Gilded Rose', () => {
 	it('should decrease the quality and sellin of an item by 1', () => {
@@ -65,5 +66,16 @@ describe('Gilded Rose', () => {
 
 		expect(agedBrieItem.quality).toBe(50);
 		expect(agedBrieItem.sellIn).toBe(5);
+	});
+
+	it('should not decrease the quality or sellIn of the SULFURAS item', () => {
+		const sulfurasItem = new Item(SULFURAS, 10, 10);
+
+		const gildedRose = new GildedRose([sulfurasItem]);
+
+		gildedRose.updateQuality();
+
+		expect(sulfurasItem.quality).toBe(10);
+		expect(sulfurasItem.sellIn).toBe(10);
 	});
 });
