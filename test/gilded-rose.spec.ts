@@ -84,14 +84,14 @@ describe('Gilded Rose', () => {
 		expect(agedBrieItem.sellIn).toBe(5);
 	});
 
-	it('should not decrease the quality or sellIn of the SULFURAS item', () => {
-		const sulfurasItem = new Item(SULFURAS, 10, 10);
+	it('should not update the quality or sellIn of the SULFURAS item', () => {
+		const sulfurasItem = new Item(SULFURAS, 10, 80);
 
 		const gildedRose = new GildedRose([sulfurasItem]);
 
 		gildedRose.updateQuality();
 
-		expect(sulfurasItem.quality).toBe(10);
+		expect(sulfurasItem.quality).toBe(80);
 		expect(sulfurasItem.sellIn).toBe(10);
 	});
 
