@@ -1,6 +1,5 @@
-import { AGED_BRIE, BACKSTAGE_PASSES, SULFURAS } from '@/constants';
 import { GildedRose } from '@/gilded-rose';
-import { Item } from '@/item';
+import { AGED_BRIE, BACKSTAGE_PASSES, Item, SULFURAS } from '@/item';
 
 describe('Gilded Rose', () => {
 	it('should decrease the quality and sellin of an item by 1', () => {
