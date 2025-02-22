@@ -1,9 +1,6 @@
 import { AGED_BRIE, BACKSTAGE_PASSES, SULFURAS } from '@/constants';
 import { Item } from '@/item';
-
-function minMaxNumber(value: number, min: number, max: number): number {
-	return Math.min(Math.max(value, min), max);
-}
+import { minMaxNumber } from '@/utils';
 
 interface ItemStrategy {
 	update: (item: Item) => void;
