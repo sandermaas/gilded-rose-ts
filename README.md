@@ -2,6 +2,10 @@
 
 This is the Gilded Rose kata in TypeScript.
 
+## Considerations while refactoring
+
+- The "Aged Brie" actually increases in quality double as fast when the sellIn value reaches 0. There is no mention of the exact behaviour of "Aged Brie" in the requirements so I will assume this is correct.
+
 ## Getting started
 
 Install dependencies

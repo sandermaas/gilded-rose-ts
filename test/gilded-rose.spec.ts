@@ -45,7 +45,7 @@ describe('Gilded Rose', () => {
 		expect(barItem.sellIn).toBe(-5);
 	});
 
-	it('should increase the quality of AGED_BRIE by 1', () => {
+	it('should increase the quality of AGED_BRIE by 1 when sellIn is higher than 0', () => {
 		const agedBrieItem = new Item(AGED_BRIE, 3, 5);
 
 		const gildedRose = new GildedRose([agedBrieItem]);
@@ -54,6 +54,23 @@ describe('Gilded Rose', () => {
 
 		expect(agedBrieItem.quality).toBe(6);
 		expect(agedBrieItem.sellIn).toBe(2);
+	});
+
+	it('should increase the quality of AGED_BRIE by 2 when sellIn is 0 or less', () => {
+		const agedBrieWithSellIn0Item = new Item(AGED_BRIE, 0, 5);
+		const agedBrieWithSellInNegativeItem = new Item(AGED_BRIE, -8, 6);
+
+		const gildedRose = new GildedRose([
+			agedBrieWithSellIn0Item,
+			agedBrieWithSellInNegativeItem,
+		]);
+
+		gildedRose.updateQuality();
+
+		expect(agedBrieWithSellIn0Item.quality).toBe(7);
+		expect(agedBrieWithSellIn0Item.sellIn).toBe(-1);
+		expect(agedBrieWithSellInNegativeItem.quality).toBe(8);
+		expect(agedBrieWithSellInNegativeItem.sellIn).toBe(-9);
 	});
 
 	it('should not increase the quality of an item over 50', () => {
