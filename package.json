@@ -8,7 +8,7 @@
 		"precompile": "rimraf app/**/*.js test/**/*.js",
 		"pretest": "rimraf app/**/*.js test/**/*.js",
 		"test": "jest",
-		"test:text": "ts-node test/golden-master-text-test.ts",
+		"test:text": "ts-node -r tsconfig-paths/register test/golden-master-text-test.ts ",
 		"test:watch": "jest --watchAll"
 	},
 	"license": "MIT",
