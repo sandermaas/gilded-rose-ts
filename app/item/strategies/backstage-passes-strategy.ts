@@ -1,7 +1,8 @@
 import { minMaxNumber } from '@/utils';
 
-import { MIN_QUALITY, MAX_QUALITY } from '../constants';
+import { MAX_QUALITY, MIN_QUALITY } from '../constants';
 import type { ItemStrategy } from '../types';
+import { isItemExpired } from '../utils';
 
 export const backstagePassesStrategy: ItemStrategy = {
   update: (item) => {
@@ -14,10 +15,9 @@ export const backstagePassesStrategy: ItemStrategy = {
       qualityIncrease = 3;
     }
 
-    item.quality =
-      item.sellIn > 0
-        ? minMaxNumber(item.quality + qualityIncrease, MIN_QUALITY, MAX_QUALITY)
-        : 0;
+    item.quality = isItemExpired(item)
+      ? 0
+      : minMaxNumber(item.quality + qualityIncrease, MIN_QUALITY, MAX_QUALITY);
     item.sellIn -= 1;
   },
 };
