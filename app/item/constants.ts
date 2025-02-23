@@ -8,3 +8,4 @@ export const LEGENDARY_ITEMS = [SULFURAS];
 
 export const MIN_QUALITY = 0;
 export const MAX_QUALITY = 50;
+export const LEGENDARY_QUALITY = 80;

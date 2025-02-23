@@ -1,4 +1,4 @@
-import { SULFURAS } from '../constants';
+import { LEGENDARY_QUALITY, SULFURAS } from '../constants';
 import { Item } from '../Item';
 
 import { legendaryStrategy } from './legendary-strategy';
@@ -19,7 +19,7 @@ describe('legendaryStrategy', () => {
 			expect(itemWithSellInPositive.sellIn).toBe(7);
 		});
 
-		it('should always have a quality of 80', () => {
+		it('should always have a quality of LEGENDARY_QUALITY', () => {
 			const itemWithSellIn0 = new Item(SULFURAS, 0, 55);
 			const itemWithSellInNegative = new Item(SULFURAS, -4, 80);
 			const itemWithSellInPositive = new Item(SULFURAS, 7, -23);
@@ -28,9 +28,9 @@ describe('legendaryStrategy', () => {
 			legendaryStrategy.update(itemWithSellInNegative);
 			legendaryStrategy.update(itemWithSellInPositive);
 
-			expect(itemWithSellIn0.quality).toBe(80);
-			expect(itemWithSellInNegative.quality).toBe(80);
-			expect(itemWithSellInPositive.quality).toBe(80);
+			expect(itemWithSellIn0.quality).toBe(LEGENDARY_QUALITY);
+			expect(itemWithSellInNegative.quality).toBe(LEGENDARY_QUALITY);
+			expect(itemWithSellInPositive.quality).toBe(LEGENDARY_QUALITY);
 		});
 	});
 });
