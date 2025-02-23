@@ -11,47 +11,46 @@ describe('defaultStrategy', () => {
         new Item('foo', -4, 5),
         new Item('foo', 7, 5),
       ];
+      const results = [-1, -5, 6];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         defaultStrategy.update(item);
-      });
 
-      expect(items[0].sellIn).toBe(-1);
-      expect(items[1].sellIn).toBe(-5);
-      expect(items[2].sellIn).toBe(6);
+        expect(item.sellIn).toBe(results[itemIndex]);
+      });
     });
 
     it('should decrease the quality by 1 when sellIn is higher than 0', () => {
       const items = [new Item('foo', 3, 12), new Item('foo', 16, 7)];
+      const results = [11, 6];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         defaultStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(11);
-      expect(items[1].quality).toBe(6);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should decrease the quality by 2 when sellIn is 0 or less', () => {
       const items = [new Item('foo', 0, 10), new Item('foo', -8, 5)];
+      const results = [8, 3];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         defaultStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(8);
-      expect(items[1].quality).toBe(3);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should not decrease the quality below MIN_QUALITY', () => {
       const items = [new Item('foo', -8, 1), new Item('foo', 8, 0)];
+      const results = [MIN_QUALITY, MIN_QUALITY];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         defaultStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(MIN_QUALITY);
-      expect(items[1].quality).toBe(MIN_QUALITY);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
   });
 });

@@ -11,14 +11,13 @@ describe('backstagePassesStrategy', () => {
         new Item(BACKSTAGE_PASSES, -4, 5),
         new Item(BACKSTAGE_PASSES, 7, 5),
       ];
+      const results = [-1, -5, 6];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         backstagePassesStrategy.update(item);
-      });
 
-      expect(items[0].sellIn).toBe(-1);
-      expect(items[1].sellIn).toBe(-5);
-      expect(items[2].sellIn).toBe(6);
+        expect(item.sellIn).toBe(results[itemIndex]);
+      });
     });
 
     it('should increase the quality by 1 when sellIn is higher than 10', () => {
@@ -26,13 +25,13 @@ describe('backstagePassesStrategy', () => {
         new Item(BACKSTAGE_PASSES, 11, 2),
         new Item(BACKSTAGE_PASSES, 20, 4),
       ];
+      const results = [3, 5];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         backstagePassesStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(3);
-      expect(items[1].quality).toBe(5);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should increase the quality by 2 when sellIn is between 6 and 10', () => {
@@ -40,13 +39,13 @@ describe('backstagePassesStrategy', () => {
         new Item(BACKSTAGE_PASSES, 6, 3),
         new Item(BACKSTAGE_PASSES, 10, 5),
       ];
+      const results = [5, 7];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         backstagePassesStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(5);
-      expect(items[1].quality).toBe(7);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should increase the quality by 3 when sellIn is between 1 and 5', () => {
@@ -54,13 +53,13 @@ describe('backstagePassesStrategy', () => {
         new Item(BACKSTAGE_PASSES, 1, 4),
         new Item(BACKSTAGE_PASSES, 5, 6),
       ];
+      const results = [7, 9];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         backstagePassesStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(7);
-      expect(items[1].quality).toBe(9);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should set quality to MIN_QUALITY when sellIn is 0 or less', () => {
@@ -68,13 +67,13 @@ describe('backstagePassesStrategy', () => {
         new Item(BACKSTAGE_PASSES, 0, 8),
         new Item(BACKSTAGE_PASSES, -1, 10),
       ];
+      const results = [MIN_QUALITY, MIN_QUALITY];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         backstagePassesStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(MIN_QUALITY);
-      expect(items[1].quality).toBe(MIN_QUALITY);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should not increase the quality of an item over MAX_QUALITY', () => {
@@ -83,14 +82,13 @@ describe('backstagePassesStrategy', () => {
         new Item(BACKSTAGE_PASSES, 8, 49),
         new Item(BACKSTAGE_PASSES, 12, 50),
       ];
+      const results = [MAX_QUALITY, MAX_QUALITY, MAX_QUALITY];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         backstagePassesStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(MAX_QUALITY);
-      expect(items[1].quality).toBe(MAX_QUALITY);
-      expect(items[2].quality).toBe(MAX_QUALITY);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
   });
 });

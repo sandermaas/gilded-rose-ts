@@ -11,14 +11,13 @@ describe('legendaryStrategy', () => {
         new Item(SULFURAS, -4, 5),
         new Item(SULFURAS, 7, 5),
       ];
+      const results = [0, -4, 7];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         legendaryStrategy.update(item);
-      });
 
-      expect(items[0].sellIn).toBe(0);
-      expect(items[1].sellIn).toBe(-4);
-      expect(items[2].sellIn).toBe(7);
+        expect(item.sellIn).toBe(results[itemIndex]);
+      });
     });
 
     it('should always have a quality of LEGENDARY_QUALITY', () => {
@@ -27,14 +26,13 @@ describe('legendaryStrategy', () => {
         new Item(SULFURAS, -4, 80),
         new Item(SULFURAS, 7, -23),
       ];
+      const results = [LEGENDARY_QUALITY, LEGENDARY_QUALITY, LEGENDARY_QUALITY];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         legendaryStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(LEGENDARY_QUALITY);
-      expect(items[1].quality).toBe(LEGENDARY_QUALITY);
-      expect(items[2].quality).toBe(LEGENDARY_QUALITY);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
   });
 });

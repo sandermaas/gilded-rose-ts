@@ -11,14 +11,13 @@ describe('conjuredStrategy', () => {
         new Item(CONJURED_MANA_CAKE, -4, 5),
         new Item(CONJURED_MANA_CAKE, 7, 5),
       ];
+      const results = [-1, -5, 6];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         conjuredStrategy.update(item);
-      });
 
-      expect(items[0].sellIn).toBe(-1);
-      expect(items[1].sellIn).toBe(-5);
-      expect(items[2].sellIn).toBe(6);
+        expect(item.sellIn).toBe(results[itemIndex]);
+      });
     });
 
     it('should decrease the quality by 2 when sellIn is higher than 0', () => {
@@ -26,13 +25,13 @@ describe('conjuredStrategy', () => {
         new Item(CONJURED_MANA_CAKE, 3, 12),
         new Item(CONJURED_MANA_CAKE, 16, 7),
       ];
+      const results = [10, 5];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         conjuredStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(10);
-      expect(items[1].quality).toBe(5);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should decrease the quality by 4 when sellIn is 0 or less', () => {
@@ -40,13 +39,13 @@ describe('conjuredStrategy', () => {
         new Item(CONJURED_MANA_CAKE, 0, 10),
         new Item(CONJURED_MANA_CAKE, -8, 5),
       ];
+      const results = [6, 1];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         conjuredStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(6);
-      expect(items[1].quality).toBe(1);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
 
     it('should not decrease the quality below MIN_QUALITY', () => {
@@ -54,13 +53,13 @@ describe('conjuredStrategy', () => {
         new Item(CONJURED_MANA_CAKE, -8, 2),
         new Item(CONJURED_MANA_CAKE, 8, 1),
       ];
+      const results = [MIN_QUALITY, MIN_QUALITY];
 
-      items.forEach((item) => {
+      items.forEach((item, itemIndex) => {
         conjuredStrategy.update(item);
-      });
 
-      expect(items[0].quality).toBe(MIN_QUALITY);
-      expect(items[1].quality).toBe(MIN_QUALITY);
+        expect(item.quality).toBe(results[itemIndex]);
+      });
     });
   });
 });
