@@ -1,4 +1,4 @@
-import { AGED_BRIE } from '../constants';
+import { AGED_BRIE, MAX_QUALITY } from '../constants';
 import { Item } from '../Item';
 
 import { agedBrieStrategy } from './aged-brie-strategy';
@@ -41,15 +41,15 @@ describe('agedBrieStrategy', () => {
 			expect(itemWithSellInNegative.quality).toBe(8);
 		});
 
-		it('should not increase the quality of an item over 50', () => {
+		it('should not increase the quality of an item over MAX_QUALITY', () => {
 			const itemWithSellInNegative = new Item(AGED_BRIE, -3, 49);
 			const itemWithSellInPositive = new Item(AGED_BRIE, 6, 50);
 
 			agedBrieStrategy.update(itemWithSellInNegative);
 			agedBrieStrategy.update(itemWithSellInPositive);
 
-			expect(itemWithSellInNegative.quality).toBe(50);
-			expect(itemWithSellInPositive.quality).toBe(50);
+			expect(itemWithSellInNegative.quality).toBe(MAX_QUALITY);
+			expect(itemWithSellInPositive.quality).toBe(MAX_QUALITY);
 		});
 	});
 });

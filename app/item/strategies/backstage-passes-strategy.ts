@@ -1,5 +1,6 @@
 import { minMaxNumber } from '@/utils';
 
+import { MIN_QUALITY, MAX_QUALITY } from '../constants';
 import type { ItemStrategy } from '../types';
 
 export const backstagePassesStrategy: ItemStrategy = {
@@ -14,7 +15,9 @@ export const backstagePassesStrategy: ItemStrategy = {
 		}
 
 		item.quality =
-			item.sellIn > 0 ? minMaxNumber(item.quality + qualityIncrease, 0, 50) : 0;
+			item.sellIn > 0
+				? minMaxNumber(item.quality + qualityIncrease, MIN_QUALITY, MAX_QUALITY)
+				: 0;
 		item.sellIn -= 1;
 	},
 };

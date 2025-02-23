@@ -1,3 +1,4 @@
+import { MIN_QUALITY } from '../constants';
 import { Item } from '../Item';
 
 import { defaultStrategy } from './default-strategy';
@@ -40,15 +41,15 @@ describe('defaultStrategy', () => {
 			expect(itemWithSellInNegative.quality).toBe(3);
 		});
 
-		it('should not decrease the quality below 0', () => {
+		it('should not decrease the quality below MIN_QUALITY', () => {
 			const itemWithSellInNegative = new Item('foo', -8, 1);
 			const itemWithSellInPositive = new Item('foo', 8, 0);
 
 			defaultStrategy.update(itemWithSellInNegative);
 			defaultStrategy.update(itemWithSellInPositive);
 
-			expect(itemWithSellInNegative.quality).toBe(0);
-			expect(itemWithSellInPositive.quality).toBe(0);
+			expect(itemWithSellInNegative.quality).toBe(MIN_QUALITY);
+			expect(itemWithSellInPositive.quality).toBe(MIN_QUALITY);
 		});
 	});
 });

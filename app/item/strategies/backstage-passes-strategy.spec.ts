@@ -1,4 +1,4 @@
-import { BACKSTAGE_PASSES } from '../constants';
+import { BACKSTAGE_PASSES, MAX_QUALITY } from '../constants';
 import { Item } from '../Item';
 
 import { backstagePassesStrategy } from './backstage-passes-strategy';
@@ -63,7 +63,7 @@ describe('backstagePassesStrategy', () => {
 			expect(itemWithSellInNegative.quality).toBe(0);
 		});
 
-		it('should not increase the quality of an item over 50', () => {
+		it('should not increase the quality of an item over MAX_QUALITY', () => {
 			const itemWithSellin2 = new Item(BACKSTAGE_PASSES, 2, 48);
 			const itemWithSellin8 = new Item(BACKSTAGE_PASSES, 8, 49);
 			const itemWithSellin12 = new Item(BACKSTAGE_PASSES, 12, 50);
@@ -72,9 +72,9 @@ describe('backstagePassesStrategy', () => {
 			backstagePassesStrategy.update(itemWithSellin8);
 			backstagePassesStrategy.update(itemWithSellin12);
 
-			expect(itemWithSellin2.quality).toBe(50);
-			expect(itemWithSellin8.quality).toBe(50);
-			expect(itemWithSellin12.quality).toBe(50);
+			expect(itemWithSellin2.quality).toBe(MAX_QUALITY);
+			expect(itemWithSellin8.quality).toBe(MAX_QUALITY);
+			expect(itemWithSellin12.quality).toBe(MAX_QUALITY);
 		});
 	});
 });

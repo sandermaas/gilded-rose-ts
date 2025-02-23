@@ -5,3 +5,6 @@ export const SULFURAS = 'Sulfuras, Hand of Ragnaros';
 
 export const CONJURED_ITEMS = [CONJURED_MANA_CAKE];
 export const LEGENDARY_ITEMS = [SULFURAS];
+
+export const MIN_QUALITY = 0;
+export const MAX_QUALITY = 50;
