@@ -10,6 +10,12 @@ This is the Gilded Rose kata in TypeScript.
 
 - The requirements do not specify if a "Conjured" item is an item with a specific name, an item with "conjured" in the name or maybe something else. Next to "conjured" items there is also a mention of a "legendary" category with the Sulfuras item as an example. Sulfuras does not have the word legendary in the name so it is not safe to assume that items from a certain category will have that category as part of their name. As there seems to be no logical way to define which items are "conjured" and which "legendary" I will proceed with hard-coding them in the app.
 
+## Thoughts after refactoring
+
+The strategy pattern provided the flexibilty to implement different behaviours for the `Item` class without the need to change the external interface. We can now add or remove behaviours and test them separately so it becomes simple to modify and extend.
+
+In an ideal world without goblins the context for the item strategies and the item utils would be the `Item` class.
+
 ## Getting started
 
 Install dependencies
