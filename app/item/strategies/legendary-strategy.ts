@@ -1,6 +1,6 @@
 import type { ItemStrategy } from '../types';
 
-export const sulfurasStrategy: ItemStrategy = {
+export const legendaryStrategy: ItemStrategy = {
 	update: (item) => {
 		item.quality = 80;
 	},

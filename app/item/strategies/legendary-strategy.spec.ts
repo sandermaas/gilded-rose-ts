@@ -1,18 +1,18 @@
 import { SULFURAS } from '../constants';
 import { Item } from '../Item';
 
-import { sulfurasStrategy } from './sulfuras-strategy';
+import { legendaryStrategy } from './legendary-strategy';
 
-describe('sulfurasStrategy', () => {
+describe('legendaryStrategy', () => {
 	describe('update', () => {
 		it('should not decrease the sellIn', () => {
 			const itemWithSellIn0 = new Item(SULFURAS, 0, 5);
 			const itemWithSellInNegative = new Item(SULFURAS, -4, 5);
 			const itemWithSellInPositive = new Item(SULFURAS, 7, 5);
 
-			sulfurasStrategy.update(itemWithSellIn0);
-			sulfurasStrategy.update(itemWithSellInNegative);
-			sulfurasStrategy.update(itemWithSellInPositive);
+			legendaryStrategy.update(itemWithSellIn0);
+			legendaryStrategy.update(itemWithSellInNegative);
+			legendaryStrategy.update(itemWithSellInPositive);
 
 			expect(itemWithSellIn0.sellIn).toBe(0);
 			expect(itemWithSellInNegative.sellIn).toBe(-4);
@@ -24,9 +24,9 @@ describe('sulfurasStrategy', () => {
 			const itemWithSellInNegative = new Item(SULFURAS, -4, 80);
 			const itemWithSellInPositive = new Item(SULFURAS, 7, -23);
 
-			sulfurasStrategy.update(itemWithSellIn0);
-			sulfurasStrategy.update(itemWithSellInNegative);
-			sulfurasStrategy.update(itemWithSellInPositive);
+			legendaryStrategy.update(itemWithSellIn0);
+			legendaryStrategy.update(itemWithSellInNegative);
+			legendaryStrategy.update(itemWithSellInPositive);
 
 			expect(itemWithSellIn0.quality).toBe(80);
 			expect(itemWithSellInNegative.quality).toBe(80);
