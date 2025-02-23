@@ -1,5 +1,5 @@
 import { Item } from './Item';
 
 export interface ItemStrategy {
-	update: (item: Item) => void;
+  update: (item: Item) => void;
 }

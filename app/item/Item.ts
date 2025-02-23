@@ -1,11 +1,11 @@
 export class Item {
-	name: string;
-	sellIn: number;
-	quality: number;
+  name: string;
+  sellIn: number;
+  quality: number;
 
-	constructor(name, sellIn, quality) {
-		this.name = name;
-		this.sellIn = sellIn;
-		this.quality = quality;
-	}
+  constructor(name, sellIn, quality) {
+    this.name = name;
+    this.sellIn = sellIn;
+    this.quality = quality;
+  }
 }
