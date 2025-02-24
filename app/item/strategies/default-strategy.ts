@@ -1,8 +1,8 @@
 import { minMaxNumber } from '@/utils';
 
-import { MIN_QUALITY, MAX_QUALITY } from '../constants';
-import type { ItemStrategy } from '../types';
+import { MAX_QUALITY, MIN_QUALITY } from '../constants';
 import { isItemExpired } from '../utils';
+import { ItemStrategy } from './ItemStrategy';
 
 export const defaultStrategy: ItemStrategy = {
   update: (item) => {

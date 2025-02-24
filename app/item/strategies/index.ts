@@ -1,1 +1,1 @@
-export * from './get-item-strategy';
+export * from './ItemStrategy';

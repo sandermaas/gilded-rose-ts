@@ -1,4 +1,4 @@
-import { Item, getItemStrategy } from '@/item';
+import { Item, ItemStrategy } from '@/item';
 
 export class GildedRose {
   items: Array<Item>;
@@ -9,7 +9,7 @@ export class GildedRose {
 
   updateQuality() {
     this.items.forEach((item) => {
-      getItemStrategy(item.name).update(item);
+      ItemStrategy.getStrategy(item.name).update(item);
     });
 
     return this.items;

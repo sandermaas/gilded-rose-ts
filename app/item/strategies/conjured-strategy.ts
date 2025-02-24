@@ -1,8 +1,8 @@
 import { minMaxNumber } from '@/utils';
 
 import { MAX_QUALITY, MIN_QUALITY } from '../constants';
-import type { ItemStrategy } from '../types';
 import { isItemExpired } from '../utils';
+import { ItemStrategy } from './ItemStrategy';
 
 export const conjuredStrategy: ItemStrategy = {
   update: (item) => {

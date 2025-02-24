@@ -1,5 +1,5 @@
 import { LEGENDARY_QUALITY } from '../constants';
-import type { ItemStrategy } from '../types';
+import { ItemStrategy } from './ItemStrategy';
 
 export const legendaryStrategy: ItemStrategy = {
   update: (item) => {
